@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Calendar } from "@/components/calendar/calendar";
 import { useCalendarStore } from "@/stores/calendar-store";
 import { DEFAULT_FILTERS, RequestsTable, type RequestFilters } from "./requests-table";
@@ -11,7 +11,6 @@ const REQUESTS_PEEK = 321;
 
 export function TimeOffView() {
   const [filters, setFilters] = useState<RequestFilters>(DEFAULT_FILTERS);
-  const tableRef = useRef<HTMLElement>(null);
 
   return (
     <div
@@ -27,14 +26,9 @@ export function TimeOffView() {
         <div className="flex h-[max(460px,calc(100dvh_-_125px))] w-full shrink-0 md:h-[max(560px,calc(100dvh_-_193px))] xl:h-full xl:w-auto xl:min-w-0 xl:flex-1 xl:shrink">
           <Calendar />
         </div>
-        <StatsPanel
-          onShowPending={() => {
-            setFilters({ ...DEFAULT_FILTERS, statuses: ["pending"] });
-            tableRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-        />
+        <StatsPanel />
       </div>
-      <RequestsTable ref={tableRef} filters={filters} onFiltersChange={setFilters} />
+      <RequestsTable filters={filters} onFiltersChange={setFilters} />
     </div>
   );
 }

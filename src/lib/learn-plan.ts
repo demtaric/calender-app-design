@@ -7,7 +7,8 @@ export const PLAN_ID_PREFIX = "plan:";
 
 const COLORS: readonly EventColor[] = ["green", "purple", "cyan", "orange", "pink", "blue"];
 
-type PlanEvent = {
+/** One generated plan entry, as written by Learn_2026/plan/build-events.mjs. */
+export type PlanEvent = {
   id: string;
   title: string;
   date: string;
@@ -15,6 +16,8 @@ type PlanEvent = {
   end: number;
   allDay: boolean;
   color: string;
+  subject: string;
+  kind: string;
   status: string;
   note?: string;
 };
@@ -35,7 +38,9 @@ function toCalEvent(e: PlanEvent): CalEvent {
   };
 }
 
-export const learnPlanEvents: CalEvent[] = (planEvents as PlanEvent[]).map(toCalEvent);
+export const learnPlanItems = planEvents as PlanEvent[];
+
+export const learnPlanEvents: CalEvent[] = learnPlanItems.map(toCalEvent);
 
 export const isPlanEvent = (event: CalEvent) => event.id.startsWith(PLAN_ID_PREFIX);
 
