@@ -83,7 +83,7 @@ export function GlobalSearch() {
     const cal = useCalendarStore.getState();
     if (eventId) cal.focusEvent(eventId, date);
     else cal.setDate(date);
-    router.push("/time-off");
+    router.push("/study-plan");
   };
 
   return (
@@ -101,7 +101,7 @@ export function GlobalSearch() {
           <CommandEmpty className="t-14 text-fg-2">No results found.</CommandEmpty>
           <CommandGroup heading="Actions">
             <CommandItem onSelect={() => run(() => openOverlay({ kind: "request" }))}>
-              <PlaneIcon /> Request time-off
+              <PlaneIcon /> Plan a break
             </CommandItem>
             <CommandItem onSelect={() => run(() => openOverlay({ kind: "event", date: today }))}>
               <CalendarPlusIcon /> New event

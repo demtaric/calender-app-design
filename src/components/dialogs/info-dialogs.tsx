@@ -58,7 +58,7 @@ export function HolidaysDialog({ open, onClose }: BaseProps) {
                     onClick={() => {
                       useCalendarStore.getState().setDate(h.date);
                       onClose();
-                      router.push("/time-off");
+                      router.push("/study-plan");
                     }}
                     className={cn(
                       "flex min-w-0 flex-1 items-center gap-3 rounded-lg px-2 py-2 text-left transition-colors duration-150 hover-fine:bg-hover",

@@ -34,7 +34,7 @@ export function StatsPanel({ onShowPending }: { onShowPending: () => void }) {
       tint: "var(--category-green-tint)",
       value: `${days(s.available)} available`,
       caption: "To book time off",
-      label: "Request time-off",
+      label: "Plan a break",
       onSelect: () => openOverlay({ kind: "request" }),
     },
     {

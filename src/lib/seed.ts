@@ -1,4 +1,4 @@
-import { learnPlanEvents } from "./learn-plan";
+import { learnPlanEvents, learnPlanHolidays } from "./learn-plan";
 import type { AppState } from "./types";
 
 /** The calendar opens on the first week of the learning plan (B1 run-in starts Mon Nov 2). */
@@ -137,20 +137,7 @@ export function createSeed(): AppState {
         submittedAt: "2026-02-12T10:00:00.000Z",
       },
     ],
-    holidays: [
-      { id: "ho-1", date: "2026-01-01", name: "New Year's Day" },
-      { id: "ho-2", date: "2026-01-26", name: "Republic Day" },
-      { id: "ho-3", date: "2026-03-04", name: "Holi" },
-      { id: "ho-4", date: "2026-04-03", name: "Good Friday" },
-      { id: "ho-5", date: "2026-05-01", name: "Labour Day" },
-      { id: "ho-6", date: "2026-06-26", name: "Muharram" },
-      { id: "ho-7", date: "2026-08-15", name: "Independence Day" },
-      { id: "ho-8", date: "2026-10-02", name: "Gandhi Jayanti" },
-      { id: "ho-9", date: "2026-10-20", name: "Dussehra" },
-      { id: "ho-10", date: "2026-11-14", name: "Diwali" },
-      { id: "ho-11", date: "2026-11-24", name: "Guru Nanak Jayanti" },
-      { id: "ho-12", date: "2026-12-25", name: "Christmas Day" },
-    ],
+    holidays: learnPlanHolidays,
     profile: {
       name: "Harry Potter",
       email: "harrypotter@gmail.com",
@@ -184,7 +171,7 @@ export function createSeed(): AppState {
         body: "Your half-day leave on Nov 13 was approved by Minerva.",
         createdAt: "2026-10-25T16:20:00.000Z",
         read: true,
-        href: "/time-off",
+        href: "/study-plan",
       },
       {
         id: "no-2",

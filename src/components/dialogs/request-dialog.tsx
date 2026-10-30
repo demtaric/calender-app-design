@@ -93,7 +93,7 @@ function RequestForm({ requestId, from, onDone }: { requestId?: string; from?: s
       }}
     >
       <DialogHeader className="gap-1.5">
-        <DialogTitle className="t-16">{existing ? "Edit request" : "Request time-off"}</DialogTitle>
+        <DialogTitle className="t-16">{existing ? "Edit request" : "Plan a break"}</DialogTitle>
         <DialogDescription className="t-14">
           {existing ? "Changes are sent back to your manager for approval." : "Your manager is notified as soon as you submit."}
         </DialogDescription>

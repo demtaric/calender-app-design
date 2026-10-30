@@ -75,11 +75,11 @@ export function TitleBar() {
         <Button
           variant="brand"
           className="gap-1.5 max-sm:w-[30px] max-sm:px-0"
-          aria-label="Request time-off"
+          aria-label="Plan a break"
           onClick={() => openOverlay({ kind: "request" })}
         >
           <Icon name="request-time-off" className="text-white" />
-          <span className="max-sm:sr-only">Request time-off</span>
+          <span className="max-sm:sr-only">Plan a break</span>
         </Button>
       </div>
     </header>

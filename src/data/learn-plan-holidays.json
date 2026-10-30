@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ho-2026-01-01",
+    "date": "2026-01-01",
+    "name": "Neujahr"
+  },
+  {
+    "id": "ho-2026-01-06",
+    "date": "2026-01-06",
+    "name": "Heilige Drei Könige"
+  },
+  {
+    "id": "ho-2026-04-03",
+    "date": "2026-04-03",
+    "name": "Karfreitag"
+  },
+  {
+    "id": "ho-2026-04-06",
+    "date": "2026-04-06",
+    "name": "Ostermontag"
+  },
+  {
+    "id": "ho-2026-05-01",
+    "date": "2026-05-01",
+    "name": "Tag der Arbeit"
+  },
+  {
+    "id": "ho-2026-05-14",
+    "date": "2026-05-14",
+    "name": "Christi Himmelfahrt"
+  },
+  {
+    "id": "ho-2026-05-25",
+    "date": "2026-05-25",
+    "name": "Pfingstmontag"
+  },
+  {
+    "id": "ho-2026-06-04",
+    "date": "2026-06-04",
+    "name": "Fronleichnam"
+  },
+  {
+    "id": "ho-2026-10-03",
+    "date": "2026-10-03",
+    "name": "Tag der Deutschen Einheit"
+  },
+  {
+    "id": "ho-2026-11-01",
+    "date": "2026-11-01",
+    "name": "Allerheiligen"
+  },
+  {
+    "id": "ho-2026-12-25",
+    "date": "2026-12-25",
+    "name": "1. Weihnachtstag"
+  },
+  {
+    "id": "ho-2026-12-26",
+    "date": "2026-12-26",
+    "name": "2. Weihnachtstag"
+  },
+  {
+    "id": "ho-2027-01-01",
+    "date": "2027-01-01",
+    "name": "Neujahr"
+  },
+  {
+    "id": "ho-2027-01-06",
+    "date": "2027-01-06",
+    "name": "Heilige Drei Könige"
+  }
+]

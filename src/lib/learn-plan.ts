@@ -1,5 +1,6 @@
 import planEvents from "@/data/learn-plan-events.json";
-import type { CalEvent, EventColor } from "./types";
+import planHolidays from "@/data/learn-plan-holidays.json";
+import type { CalEvent, EventColor, Holiday } from "./types";
 
 /** Plan events are owned by Learn_2026/plan/plan.json; this prefix marks them in the store. */
 export const PLAN_ID_PREFIX = "plan:";
@@ -37,3 +38,6 @@ function toCalEvent(e: PlanEvent): CalEvent {
 export const learnPlanEvents: CalEvent[] = (planEvents as PlanEvent[]).map(toCalEvent);
 
 export const isPlanEvent = (event: CalEvent) => event.id.startsWith(PLAN_ID_PREFIX);
+
+/** Public holidays (Baden-Württemberg), maintained in Learn_2026/plan/plan.json. */
+export const learnPlanHolidays: Holiday[] = planHolidays;

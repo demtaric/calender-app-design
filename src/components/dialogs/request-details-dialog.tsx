@@ -70,7 +70,7 @@ export function RequestDetailsDialog({ open, onClose, requestId }: { open: boole
               onClick={() => {
                 useCalendarStore.getState().setDate(request.from);
                 onClose();
-                router.push("/time-off");
+                router.push("/study-plan");
               }}
             >
               <CalendarSearchIcon /> Show in calendar

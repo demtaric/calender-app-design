@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Kargul Workspace",
     short_name: "Kargul",
     description: "Plan time off, track leave requests and manage your work calendar.",
-    start_url: "/time-off",
+    start_url: "/study-plan",
     display: "standalone",
     background_color: "#f8f8f8",
     theme_color: "#f8f8f8",

@@ -5,7 +5,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { formatShort, rangeKeys } from "@/lib/dates";
 import { durationLabel, LEAVE_COLORS, WORKDAY_MINUTES, workingDays } from "@/lib/leave";
-import { isPlanEvent, learnPlanEvents } from "@/lib/learn-plan";
+import { isPlanEvent, learnPlanEvents, learnPlanHolidays } from "@/lib/learn-plan";
 import { createSeed, STATE_VERSION } from "@/lib/seed";
 import type {
   AppNotification,
@@ -309,7 +309,7 @@ export const useAppStore = create<AppStore>()(
         get().notify({
           title: `${req.type} request submitted`,
           body: `${when} · ${req.duration}. Your manager has been notified.`,
-          href: "/time-off",
+          href: "/study-plan",
         });
         return req;
       },
@@ -336,7 +336,7 @@ export const useAppStore = create<AppStore>()(
           get().notify({
             title: `${req.type} ${verb}`,
             body: `Your request for ${whenLabel(req.from, req.to)} was ${verb}.`,
-            href: "/time-off",
+            href: "/study-plan",
           });
         }
       },
@@ -501,10 +501,15 @@ export const useAppStore = create<AppStore>()(
         }
         return { ...s, version: STATE_VERSION };
       },
-      // Plan events always come fresh from the bundled plan; events created in the UI are kept.
+      // Plan events and holidays always come fresh from the bundled plan; ones added in the UI are kept.
       merge: (persisted, current) => {
         const s = { ...current, ...(persisted as Partial<AppStore>) };
-        return { ...s, events: [...learnPlanEvents, ...(s.events ?? []).filter((e) => !isPlanEvent(e))] };
+        const planDates = new Set(learnPlanHolidays.map((h) => h.date));
+        return {
+          ...s,
+          events: [...learnPlanEvents, ...(s.events ?? []).filter((e) => !isPlanEvent(e))],
+          holidays: [...learnPlanHolidays, ...(s.holidays ?? []).filter((h) => !planDates.has(h.date))],
+        };
       },
       partialize: (s) => {
         const data: Partial<AppStore> = {};

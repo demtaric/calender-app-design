@@ -75,7 +75,7 @@ export function DashboardPage() {
             </Button>
             {/* Phones reach the calendar from the nav and the Upcoming card. */}
             <Button asChild className="max-md:hidden">
-              <Link href="/time-off">
+              <Link href="/study-plan">
                 <Icon name="nav-calendar" /> Open calendar
               </Link>
             </Button>
@@ -140,14 +140,14 @@ function StatRow() {
         label="Available days"
         value={formatDays(stats.available)}
         hint={`of ${plural(total, "day", "days")} this year`}
-        href="/time-off"
+        href="/study-plan"
       />
       <StatTile
         icon="pending"
         label="Pending requests"
         value={pending.length}
         hint={pending.length ? `${plural(pendingDays, "day", "days")} awaiting approval` : "Nothing waiting on approval"}
-        href="/time-off"
+        href="/study-plan"
       />
       <StatTile
         icon="per-year"
@@ -169,7 +169,7 @@ function StatRow() {
             ? `${inDays <= 0 ? "In progress" : inDays === 1 ? "Tomorrow" : `In ${inDays} days`} · ${nextLeave.type}${nextLeave.status === "pending" ? " (pending)" : ""}`
             : "Nothing booked yet"
         }
-        href="/time-off"
+        href="/study-plan"
       />
     </StatGrid>
   );
@@ -205,7 +205,7 @@ function UpcomingCard() {
         description="Your next events and time off"
         actions={
           <Button variant="ghost" size="sm" asChild className="max-md:h-9">
-            <Link href="/time-off">
+            <Link href="/study-plan">
               View calendar <ArrowRightIcon />
             </Link>
           </Button>
@@ -415,7 +415,7 @@ function BalanceCard() {
           ))}
         </ul>
         <Button variant="brand" className="w-full max-md:h-10" onClick={() => openOverlay({ kind: "request" })}>
-          <Icon name="request-time-off" className="text-white" /> Request time-off
+          <Icon name="request-time-off" className="text-white" /> Plan a break
         </Button>
       </div>
     </Card>

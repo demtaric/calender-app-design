@@ -15,7 +15,7 @@ export const SHORTCUTS: { keys: string[]; label: string }[] = [
   { keys: ["⇧", "⌘", "Z"], label: "Redo" },
   { keys: ["⌫"], label: "Delete selected event" },
   { keys: ["N"], label: "New event" },
-  { keys: ["R"], label: "Request time-off" },
+  { keys: ["R"], label: "Plan a break" },
   { keys: ["T"], label: "Go to today" },
   { keys: ["←"], label: "Previous period" },
   { keys: ["→"], label: "Next period" },
@@ -75,7 +75,7 @@ export function KeyboardShortcuts() {
       if (document.querySelector("[role=dialog],[role=menu],[data-radix-popper-content-wrapper]")) return;
 
       const cal = useCalendarStore.getState();
-      const onCalendar = pathname === "/time-off";
+      const onCalendar = pathname === "/study-plan";
       const key = e.key;
 
       if (key === "?") openOverlay({ kind: "shortcuts" });
@@ -83,7 +83,7 @@ export function KeyboardShortcuts() {
       else if (key === "r" || key === "R") openOverlay({ kind: "request" });
       else if (key === "t" || key === "T") {
         cal.setDate(today);
-        if (!onCalendar) router.push("/time-off");
+        if (!onCalendar) router.push("/study-plan");
       } else if (onCalendar && key === "ArrowLeft") cal.step(-1);
       else if (onCalendar && key === "ArrowRight") cal.step(1);
       else if (onCalendar && (key === "d" || key === "D")) cal.setView("day");

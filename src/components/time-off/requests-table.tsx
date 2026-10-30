@@ -253,7 +253,7 @@ function RequestRow({ request: r }: { request: LeaveRequest }) {
 
   const showInCalendar = () => {
     useCalendarStore.getState().setDate(r.from);
-    router.push("/time-off");
+    router.push("/study-plan");
     document.querySelector("[data-page-scroll]")?.scrollTo({ top: 0, behavior: "smooth" });
   };
 

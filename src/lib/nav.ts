@@ -16,7 +16,7 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: "/personal-details", label: "Personal details", icon: "nav-personal" },
       { href: "/documents", label: "Documents", icon: "nav-documents" },
-      { href: "/time-off", label: "Time off", icon: "nav-calendar" },
+      { href: "/study-plan", label: "Study plan", icon: "nav-calendar" },
       { href: "/time-tracking", label: "Time tracking", icon: "nav-time-tracking" },
       { href: "/benefits", label: "Benefits", icon: "nav-benefits" },
     ],
@@ -36,5 +36,5 @@ export const ALL_PAGES: NavItem[] = [...NAV_GROUPS.flatMap((g) => g.items), SETT
 
 export function pageTitle(pathname: string): string {
   const match = ALL_PAGES.find((p) => pathname === p.href || pathname.startsWith(p.href + "/"));
-  return match?.label ?? "Time off";
+  return match?.label ?? "Study plan";
 }

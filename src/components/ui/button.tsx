@@ -11,7 +11,7 @@ const buttonVariants = cva(
         /** White control with the hairline border used across the design */
         control:
           "border-control bg-surface text-fg hover-fine:bg-hover aria-expanded:bg-hover data-[state=open]:bg-hover",
-        /** Purple gradient call-to-action ("Request time-off") */
+        /** Purple gradient call-to-action ("Plan a break") */
         brand: "accent-surface hover-fine:brightness-[1.06]",
         default: "bg-primary text-primary-foreground hover-fine:bg-brand-strong",
         outline:

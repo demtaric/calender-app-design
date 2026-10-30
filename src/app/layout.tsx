@@ -14,7 +14,7 @@ const DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "Time off · Kargul Workspace", template: "%s · Kargul Workspace" },
+  title: { default: "Study plan · Kargul Workspace", template: "%s · Kargul Workspace" },
   description: DESCRIPTION,
   applicationName: "Kargul Workspace",
   authors: [{ name: "Kargul Studio", url: "https://kargul.studio" }],
