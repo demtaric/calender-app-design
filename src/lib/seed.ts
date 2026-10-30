@@ -1,7 +1,8 @@
+import { learnPlanEvents } from "./learn-plan";
 import type { AppState } from "./types";
 
-/** The calendar opens on the week shown in the design, with Tue Nov 10 selected. */
-export const DESIGN_DATE = "2026-11-10";
+/** The calendar opens on the first week of the learning plan (B1 run-in starts Mon Nov 2). */
+export const DESIGN_DATE = "2026-11-02";
 
 /** Used only for server rendering; the browser swaps in the real date on hydration. */
 export const SERVER_TODAY = "2026-10-26";
@@ -19,52 +20,7 @@ export function createSeed(): AppState {
       { id: "ws-acme", name: "Acme Studio" },
       { id: "ws-personal", name: "Personal" },
     ],
-    events: [
-      { id: "ev-1", title: "Time off", date: "2026-11-09", start: 0, end: 1440, allDay: true, color: "green", requestId: "rq-5" },
-      { id: "ev-2", title: "Personal matters", date: "2026-11-08", start: h(11), end: h(12), allDay: false, color: "cyan" },
-      {
-        id: "ev-3",
-        title: "Personal appointment",
-        date: "2026-11-10",
-        start: h(7),
-        end: h(9),
-        allDay: false,
-        color: "orange",
-        note: "Pending",
-        requestId: "rq-6",
-      },
-      {
-        id: "ev-4",
-        title: "Extra leave",
-        date: "2026-11-10",
-        start: h(11),
-        end: h(13),
-        allDay: false,
-        color: "pink",
-        note: "From carryover days",
-      },
-      { id: "ev-5", title: "Submit medical certificate", date: "2026-11-11", start: h(10), end: h(11), allDay: false, color: "blue" },
-      { id: "ev-6", title: "Update time tracking", date: "2026-11-12", start: h(7, 30), end: h(8), allDay: false, color: "cyan" },
-      { id: "ev-7", title: "Benefits review", date: "2026-11-12", start: h(12), end: h(13), allDay: false, color: "blue" },
-      {
-        id: "ev-8",
-        title: "Half-day leave",
-        date: "2026-11-13",
-        start: h(8),
-        end: h(12),
-        allDay: false,
-        color: "green",
-        note: "Approved",
-        requestId: "rq-7",
-      },
-      { id: "ev-9", title: "Team sync", date: "2026-10-26", start: h(9, 30), end: h(10), allDay: false, color: "blue" },
-      { id: "ev-10", title: "Design review", date: "2026-10-27", start: h(14), end: h(15, 30), allDay: false, color: "purple" },
-      { id: "ev-11", title: "Payroll cut-off", date: "2026-10-30", start: 0, end: 1440, allDay: true, color: "orange" },
-      { id: "ev-12", title: "1:1 with manager", date: "2026-11-04", start: h(11), end: h(11, 30), allDay: false, color: "cyan" },
-      { id: "ev-13", title: "Time off", date: "2026-12-23", start: 0, end: 1440, allDay: true, color: "green", requestId: "rq-8" },
-      { id: "ev-14", title: "Time off", date: "2026-12-24", start: h(8), end: h(12), allDay: false, color: "green", note: "Approved", requestId: "rq-8" },
-      { id: "ev-15", title: "Time off", date: "2026-12-28", start: h(9), end: h(15), allDay: false, color: "green", note: "Pending", requestId: "rq-9" },
-    ],
+    events: learnPlanEvents,
     requests: [
       {
         id: "rq-1",

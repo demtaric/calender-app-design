@@ -5,6 +5,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { formatShort, rangeKeys } from "@/lib/dates";
 import { durationLabel, LEAVE_COLORS, WORKDAY_MINUTES, workingDays } from "@/lib/leave";
+import { isPlanEvent, learnPlanEvents } from "@/lib/learn-plan";
 import { createSeed, STATE_VERSION } from "@/lib/seed";
 import type {
   AppNotification,
@@ -499,6 +500,11 @@ export const useAppStore = create<AppStore>()(
           );
         }
         return { ...s, version: STATE_VERSION };
+      },
+      // Plan events always come fresh from the bundled plan; events created in the UI are kept.
+      merge: (persisted, current) => {
+        const s = { ...current, ...(persisted as Partial<AppStore>) };
+        return { ...s, events: [...learnPlanEvents, ...(s.events ?? []).filter((e) => !isPlanEvent(e))] };
       },
       partialize: (s) => {
         const data: Partial<AppStore> = {};
