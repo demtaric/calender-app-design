@@ -1,18 +1,20 @@
 "use client";
 
 import { useMemo } from "react";
-import { CalendarHeartIcon, CopyIcon, MapPinIcon, PencilIcon, PlaneIcon, Trash2Icon } from "lucide-react";
+import { CalendarHeartIcon, CheckIcon, CopyIcon, MapPinIcon, PencilIcon, PlaneIcon, Trash2Icon, Undo2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverAnchor, PopoverContent } from "@/components/ui/popover";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { StatusBadge } from "@/components/time-off/status-badge";
 import { formatLong, formatTimeRange, formatWeekday } from "@/lib/dates";
 import { formatDuration } from "@/lib/dates";
+import { isPlanEvent } from "@/lib/learn-plan";
 import { useIsMobile } from "@/hooks/use-media-query";
 import { useAppStore } from "@/stores/app-store";
 import { useCalendarStore } from "@/stores/calendar-store";
 import { openOverlay } from "@/stores/overlay-store";
 import { deleteCalendarEvent } from "./delete-event";
+import { markPlanStatus } from "./mark-plan-status";
 
 /** Details card for an event or holiday, anchored to whatever was clicked. */
 export function EventPopover() {
@@ -68,6 +70,11 @@ export function EventPopover() {
                     <MapPinIcon className="size-3.5 text-icon" /> <span className="truncate">{event.location}</span>
                   </p>
                 )}
+                {event.status === "done" && (
+                  <p className="t-14 flex items-center gap-1.5 text-fg">
+                    <CheckIcon className="size-3.5" /> Done
+                  </p>
+                )}
                 {event.note && !request && <p className="t-14 leading-[1.4] text-fg">{event.note}</p>}
                 {request && (
                   <div className="flex items-center gap-2 pt-1">
@@ -88,6 +95,16 @@ export function EventPopover() {
                 >
                   <PlaneIcon /> View request
                 </Button>
+              ) : isPlanEvent(event) && !event.allDay ? (
+                event.status === "done" ? (
+                  <Button size="sm" onClick={() => markPlanStatus(event.id, "planned")}>
+                    <Undo2Icon /> Undo done
+                  </Button>
+                ) : (
+                  <Button size="sm" onClick={() => markPlanStatus(event.id, "done")}>
+                    <CheckIcon /> Mark done
+                  </Button>
+                )
               ) : (
                 <Button
                   size="sm"

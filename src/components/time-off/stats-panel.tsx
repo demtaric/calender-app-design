@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useMemo } from "react";
 import { formatShort } from "@/lib/dates";
-import { learnPlanItems } from "@/lib/learn-plan";
+import { learnPlanItems, withLiveStatuses } from "@/lib/learn-plan";
 import { computeStudyStats, type Hours, type Milestone } from "@/lib/study-stats";
 import { useToday } from "@/hooks/use-today";
 import { useAppStore } from "@/stores/app-store";
@@ -30,8 +30,12 @@ function inDays(n: number): string {
 
 export function StatsPanel() {
   const weekStartsOn = useAppStore((s) => s.settings.weekStartsOn);
+  const events = useAppStore((s) => s.events);
   const today = useToday();
-  const s = useMemo(() => computeStudyStats(learnPlanItems, today, weekStartsOn), [today, weekStartsOn]);
+  const s = useMemo(
+    () => computeStudyStats(withLiveStatuses(learnPlanItems, events), today, weekStartsOn),
+    [events, today, weekStartsOn],
+  );
   const { setDate, focusEvent } = useCalendarStore.getState();
 
   const milestone = (id: string, icon: string, tint: string, name: string, m: Milestone | null): Stat[] =>
@@ -96,7 +100,7 @@ export function StatsPanel() {
       icon: "stat-extra",
       tint: "var(--category-green-tint)",
       value: s.toDate.planned ? `${doneOf(s.toDate)} done` : "0h done so far",
-      caption: s.toDate.planned ? "All study hours so far" : "Mark sessions done in plan.json",
+      caption: s.toDate.planned ? "All study hours so far" : "Mark sessions done in the calendar",
       label: "Show this week",
       onSelect: () => setDate(today),
     },

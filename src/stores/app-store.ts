@@ -17,6 +17,7 @@ import type {
   LeaveRequest,
   LeaveStatus,
   LeaveType,
+  PlanStatus,
   Profile,
   Settings,
   TimeEntry,
@@ -46,6 +47,7 @@ type Actions = {
   moveEvent: (id: string, patch: Pick<CalEvent, "date" | "start" | "end">) => void;
   deleteEvent: (id: string) => void;
   duplicateEvent: (id: string) => void;
+  setEventStatus: (id: string, status: PlanStatus) => void;
   // leave
   measureRequest: (input: RequestInput) => { days: number; label: string };
   submitRequest: (input: RequestInput, existingId?: string) => LeaveRequest;
@@ -255,6 +257,8 @@ export const useAppStore = create<AppStore>()(
         return saved;
       },
       moveEvent: (id, patch) => set((s) => ({ events: s.events.map((e) => (e.id === id ? { ...e, ...patch } : e)) })),
+      setEventStatus: (id, status) =>
+        set((s) => ({ events: s.events.map((e) => (e.id === id ? { ...e, status } : e)) })),
       deleteEvent: (id) => {
         const removed = get().events.find((e) => e.id === id);
         if (!removed) return;

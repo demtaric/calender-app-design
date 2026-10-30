@@ -1,5 +1,8 @@
 export type EventColor = "green" | "purple" | "cyan" | "orange" | "pink" | "blue";
 
+/** Progress status of a learning-plan event (see Learn_2026/plan/status.json). */
+export type PlanStatus = "planned" | "done" | "missed" | "tentative";
+
 /** Dates are local calendar days stored as "YYYY-MM-DD"; times are minutes from midnight. */
 export type CalEvent = {
   id: string;
@@ -12,6 +15,8 @@ export type CalEvent = {
   note?: string;
   location?: string;
   requestId?: string;
+  /** Only on learning-plan events. */
+  status?: PlanStatus;
 };
 
 export type LeaveStatus = "approved" | "pending" | "declined" | "cancelled";
